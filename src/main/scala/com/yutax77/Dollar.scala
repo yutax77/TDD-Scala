@@ -1,5 +1,7 @@
 package com.yutax77
 
-class Dollar(val amount: Int) {
-	def times(multiplier: Int) = {}
+class Dollar(var amount: Int) {
+	def times(multiplier: Int) = {
+	  amount = amount * multiplier
+	}
 }
