@@ -16,16 +16,8 @@ class Dollar(amount: Int) extends Money(amount){
 	}
 }
 
-class Franc(var amount: Int) {
+class Franc(amount: Int) extends Money(amount){
 	def times(multiplier: Int): Franc = {
 	  return new Franc(amount * multiplier)
 	}
-	
-	override def equals(other: Any): Boolean =
-		other match {
-			case that: Franc =>
-			  (that.isInstanceOf[Franc]) &&
-			  that.amount == this.amount
-			case _ => false
-		}
 }
