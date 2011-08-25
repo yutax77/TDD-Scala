@@ -5,7 +5,8 @@ class Money(var amount: Int){
 		other match {
 			case that: Money =>
 			  (that.isInstanceOf[Money]) &&
-			  that.amount == this.amount
+			  that.amount == this.amount &&
+			  that.getClass() == this.getClass()
 			case _ => false
 		}
 }

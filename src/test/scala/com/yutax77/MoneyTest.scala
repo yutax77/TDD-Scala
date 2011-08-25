@@ -16,6 +16,7 @@ class MoneyTest extends TestNGSuite {
 	  expect(false) {new Dollar(5) == new Dollar(6)}
 	  expect(true) {((new Franc(5)) == (new Franc(5)))}
 	  expect(false) {new Franc(5) == new Franc(6)}
+	  expect(false) {new Franc(5) == new Dollar(5)}
 	}
 	
 	@Test
