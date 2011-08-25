@@ -16,21 +16,17 @@ abstract class Money(var amount: Int){
 
 object Money {
 	def dollar(amount: Int): Money = 
-	  return new Dollar(amount)
+	  return new Dollar(amount, "USD")
 	def franc(amount: Int): Money =
-	  return new Franc(amount)
+	  return new Franc(amount, "CHF")
 }
 
-class Dollar(amount: Int) extends Money(amount){
+class Dollar(amount: Int, val currency: String) extends Money(amount){
 	override def times(multiplier: Int): Money = 
-	  return new Dollar(amount * multiplier)
-	override val currency = "USD"
-	
+	  return Money.dollar(amount * multiplier)
 }
 
-class Franc(amount: Int) extends Money(amount){
+class Franc(amount: Int, val currency: String) extends Money(amount){
 	override def times(multiplier: Int): Money = 
-	  return new Franc(amount * multiplier)
-	override val currency = "CHF"
-	
+	  return Money.franc(amount * multiplier)
 }
