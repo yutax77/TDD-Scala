@@ -16,7 +16,8 @@ abstract class Money(var amount: Int){
 object Money {
 	def dollar(amount: Int): Money = 
 	  return new Dollar(amount)
-	
+	def franc(amount: Int): Money =
+	  return new Franc(amount)
 }
 
 class Dollar(amount: Int) extends Money(amount){
