@@ -1,7 +1,9 @@
 package com.yutax77
 
-class Money(var amount: Int){
-  	override def equals(other: Any): Boolean =
+abstract class Money(var amount: Int){
+  def times(multiplier: Int): Money	
+  
+  override def equals(other: Any): Boolean =
 		other match {
 			case that: Money =>
 			  (that.isInstanceOf[Money]) &&
@@ -12,19 +14,19 @@ class Money(var amount: Int){
 }
 
 object Money {
-	def dollar(amount: Int): Dollar = {
+	def dollar(amount: Int): Money = 
 	  return new Dollar(amount)
-	}
+	
 }
 
 class Dollar(amount: Int) extends Money(amount){
-	def times(multiplier: Int): Money = {
+	override def times(multiplier: Int): Money = 
 	  return new Dollar(amount * multiplier)
-	}
+	
 }
 
 class Franc(amount: Int) extends Money(amount){
-	def times(multiplier: Int): Money = {
+	override def times(multiplier: Int): Money = 
 	  return new Franc(amount * multiplier)
-	}
+	
 }
