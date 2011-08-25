@@ -6,10 +6,8 @@ class MoneyTest extends TestNGSuite {
 	@Test
 	def testMultiplication() {
 	  val five = new Dollar(5)
-	  val ten = five.times(2)
-	  expect(10) {ten.amount}
-	  val fifteen = five.times(3)
-	  expect(15) {fifteen.amount}
+	  expect(new Dollar(10)) {five.times(2)}
+	  expect(new Dollar(15)) {five.times(3)}
 	}
 	
 	@Test
