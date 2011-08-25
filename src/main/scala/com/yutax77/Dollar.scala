@@ -2,7 +2,7 @@ package com.yutax77
 
 class Money
 
-class Dollar(var amount: Int) {
+class Dollar(var amount: Int) extends Money{
 	def times(multiplier: Int): Dollar = {
 	  return new Dollar(amount * multiplier)
 	}
