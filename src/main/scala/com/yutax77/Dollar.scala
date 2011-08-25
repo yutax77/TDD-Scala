@@ -2,6 +2,7 @@ package com.yutax77
 
 abstract class Money(var amount: Int){
   def times(multiplier: Int): Money	
+  def currency: String
   
   override def equals(other: Any): Boolean =
 		other match {
@@ -23,11 +24,13 @@ object Money {
 class Dollar(amount: Int) extends Money(amount){
 	override def times(multiplier: Int): Money = 
 	  return new Dollar(amount * multiplier)
+	override val currency = "USD"
 	
 }
 
 class Franc(amount: Int) extends Money(amount){
 	override def times(multiplier: Int): Money = 
 	  return new Franc(amount * multiplier)
+	override val currency = "CHF"
 	
 }

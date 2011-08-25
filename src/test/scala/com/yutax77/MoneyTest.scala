@@ -25,4 +25,10 @@ class MoneyTest extends TestNGSuite {
 	  expect(Money.franc(10)) {five.times(2)}
 	  expect(Money.franc(15)) {five.times(3)}
 	}
+	
+	@Test
+	def testCurrency() {
+	  expect("USD") {Money.dollar(1).currency}
+	  expect("CHF") {Money.franc(1).currency}
+	}
 }
