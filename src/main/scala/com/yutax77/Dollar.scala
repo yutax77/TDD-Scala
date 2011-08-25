@@ -12,13 +12,13 @@ class Money(var amount: Int){
 }
 
 class Dollar(amount: Int) extends Money(amount){
-	def times(multiplier: Int): Dollar = {
+	def times(multiplier: Int): Money = {
 	  return new Dollar(amount * multiplier)
 	}
 }
 
 class Franc(amount: Int) extends Money(amount){
-	def times(multiplier: Int): Franc = {
+	def times(multiplier: Int): Money = {
 	  return new Franc(amount * multiplier)
 	}
 }
