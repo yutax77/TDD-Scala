@@ -11,4 +11,10 @@ class MoneyTest extends TestNGSuite {
 	  val fifteen = five.times(3)
 	  expect(15) {fifteen.amount}
 	}
+	
+	@Test
+	def testEquality() {
+	  expect(true) {((new Dollar(5)) == (new Dollar(5)))}
+	  expect(false) {new Dollar(5) == new Dollar(6)}
+	}
 }
