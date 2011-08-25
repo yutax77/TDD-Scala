@@ -13,3 +13,17 @@ class Dollar(var amount: Int) {
 			case _ => false
 		}
 }
+
+class Franc(var amount: Int) {
+	def times(multiplier: Int): Franc = {
+	  return new Franc(amount * multiplier)
+	}
+	
+	override def equals(other: Any): Boolean =
+		other match {
+			case that: Franc =>
+			  (that.isInstanceOf[Franc]) &&
+			  that.amount == this.amount
+			case _ => false
+		}
+}
