@@ -5,7 +5,7 @@ import org.testng.annotations.Test
 class MoneyTest extends TestNGSuite {
 	@Test
 	def testMultiplication() {
-	  val five = new Dollar(5)
+	  val five = Money.dollar(5)
 	  expect(new Dollar(10)) {five.times(2)}
 	  expect(new Dollar(15)) {five.times(3)}
 	}

@@ -11,6 +11,12 @@ class Money(var amount: Int){
 		}
 }
 
+object Money {
+	def dollar(amount: Int): Dollar = {
+	  return new Dollar(amount)
+	}
+}
+
 class Dollar(amount: Int) extends Money(amount){
 	def times(multiplier: Int): Money = {
 	  return new Dollar(amount * multiplier)
