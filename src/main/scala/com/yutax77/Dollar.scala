@@ -22,10 +22,10 @@ object Money {
 
 class Dollar(amount: Int, currency: String) extends Money(amount, currency){
 	override def times(multiplier: Int): Money = 
-	  return Money.dollar(amount * multiplier)
+	  return new Dollar(amount * multiplier, "USD")
 }
 
 class Franc(amount: Int, currency: String) extends Money(amount, currency){
 	override def times(multiplier: Int): Money = 
-	  return Money.franc(amount * multiplier)
+	  return new Franc(amount * multiplier, "CHF")
 }
