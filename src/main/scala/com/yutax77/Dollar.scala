@@ -13,6 +13,8 @@ class Money(var amount: Int, val currency: String){
 			  that.getClass() == this.getClass()
 			case _ => false
 		}
+  
+  override def toString = amount + " " + currency
 }
 
 object Money {
