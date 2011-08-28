@@ -19,9 +19,9 @@ class Money(var amount: Int, val currency: String){
 
 object Money {
 	def dollar(amount: Int): Money = 
-	  return new Dollar(amount, "USD")
+	  return new Money(amount, "USD")
 	def franc(amount: Int): Money =
-	  return new Franc(amount, "CHF")
+	  return new Money(amount, "CHF")
 }
 
 class Dollar(amount: Int, currency: String) extends Money(amount, currency){
