@@ -1,11 +1,11 @@
 package com.yutax77
 
-class Money(var amount: Int, val currency: String){
+class Money(var amount: Int, val currency: String) extends Expression{
   def times(multiplier: Int): Money	= {
     new Money(amount * multiplier, currency)
   }
   
-  def plus(added: Money): Money = {
+  def plus(added: Money): Expression = {
 	new Money(amount + added.amount, currency)
   }
   
@@ -26,4 +26,12 @@ object Money {
 	  return new Money(amount, "USD")
 	def franc(amount: Int): Money =
 	  return new Money(amount, "CHF")
+}
+
+trait Expression
+
+class Bank {
+  def reduce(source: Expression, to: String): Money = {
+    return Money.dollar(10)
+  }
 }

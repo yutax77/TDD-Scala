@@ -25,7 +25,10 @@ class MoneyTest extends TestNGSuite {
 	
 	@Test
 	def testSimpleAddition() {
-	  val sum = Money.dollar(5).plus(Money.dollar(5))
-	  expect(Money.dollar(10)) {sum}
+	  val five = Money.dollar(5)
+	  val sum = five.plus(five)
+	  val bank = new Bank()
+	  val reduced = bank.reduce(sum, "USD")
+	  expect(Money.dollar(10)) {reduced}
 	}
 }
