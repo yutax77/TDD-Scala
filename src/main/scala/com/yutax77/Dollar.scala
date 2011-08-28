@@ -10,7 +10,7 @@ class Money(var amount: Int, val currency: String){
 			case that: Money =>
 			  (that.isInstanceOf[Money]) &&
 			  that.amount == this.amount &&
-			  that.getClass() == this.getClass()
+			  that.currency == this.currency
 			case _ => false
 		}
   
@@ -31,5 +31,5 @@ class Dollar(amount: Int, currency: String) extends Money(amount, currency){
 
 class Franc(amount: Int, currency: String) extends Money(amount, currency){
 	override def times(multiplier: Int): Money = 
-	  return new Money(amount * multiplier, currency)
+	  return new Franc(amount * multiplier, currency)
 }
