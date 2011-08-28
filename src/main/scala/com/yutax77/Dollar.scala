@@ -24,8 +24,5 @@ object Money {
 	  return new Money(amount, "CHF")
 }
 
-class Dollar(amount: Int, currency: String) extends Money(amount, currency){
-}
-
 class Franc(amount: Int, currency: String) extends Money(amount, currency){
 }

@@ -14,8 +14,6 @@ class MoneyTest extends TestNGSuite {
 	def testEquality() {
 	  expect(true) {(Money.dollar(5) == Money.dollar(5))}
 	  expect(false) {Money.dollar(5) == Money.dollar(6)}
-	  expect(true) {Money.franc(5) == Money.franc(5)}
-	  expect(false) {Money.franc(5) == Money.franc(6)}
 	  expect(false) {Money.franc(5) == Money.dollar(5)}
 	}
 	
