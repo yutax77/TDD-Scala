@@ -23,6 +23,3 @@ object Money {
 	def franc(amount: Int): Money =
 	  return new Money(amount, "CHF")
 }
-
-class Franc(amount: Int, currency: String) extends Money(amount, currency){
-}

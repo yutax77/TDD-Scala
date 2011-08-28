@@ -18,20 +18,8 @@ class MoneyTest extends TestNGSuite {
 	}
 	
 	@Test
-	def testFrancMultiplication() {
-	  val five = Money.franc(5)
-	  expect(Money.franc(10)) {five.times(2)}
-	  expect(Money.franc(15)) {five.times(3)}
-	}
-	
-	@Test
 	def testCurrency() {
 	  expect("USD") {Money.dollar(1).currency}
 	  expect("CHF") {Money.franc(1).currency}
-	}
-	
-	@Test
-	def testDifferentClassEquality() {
-	  expect(true) {new Money(10, "CHF") == new Franc(10, "CHF")}
 	}
 }
