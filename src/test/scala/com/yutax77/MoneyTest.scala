@@ -22,4 +22,10 @@ class MoneyTest extends TestNGSuite {
 	  expect("USD") {Money.dollar(1).currency}
 	  expect("CHF") {Money.franc(1).currency}
 	}
+	
+	@Test
+	def testSimpleAddition() {
+	  val sum = Money.dollar(5).plus(Money.dollar(5))
+	  expect(Money.dollar(10)) {sum}
+	}
 }

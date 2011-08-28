@@ -5,6 +5,10 @@ class Money(var amount: Int, val currency: String){
     new Money(amount * multiplier, currency)
   }
   
+  def plus(added: Money): Money = {
+	new Money(amount + added.amount, currency)
+  }
+  
   override def equals(other: Any): Boolean =
 		other match {
 			case that: Money =>
