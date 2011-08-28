@@ -25,8 +25,6 @@ object Money {
 }
 
 class Dollar(amount: Int, currency: String) extends Money(amount, currency){
-	override def times(multiplier: Int): Money = 
-	  return new Money(amount * multiplier, currency)
 }
 
 class Franc(amount: Int, currency: String) extends Money(amount, currency){
