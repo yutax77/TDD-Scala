@@ -32,8 +32,13 @@ trait Expression
 
 class Bank {
   def reduce(source: Expression, to: String): Money = {
-    val sum = source.asInstanceOf[Sum]
-    sum.reduce(to)
+    source match {
+      case money: Money =>
+        money
+      case _ =>
+        val sum = source.asInstanceOf[Sum]
+        sum.reduce(to)
+    }
   }
 }
 
