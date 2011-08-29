@@ -33,9 +33,13 @@ trait Expression
 class Bank {
   def reduce(source: Expression, to: String): Money = {
     val sum = source.asInstanceOf[Sum]
-    val amount = sum.augend.amount + sum.addend.amount
-    new Money(amount, to)
+    sum.reduce(to)
   }
 }
 
-class Sum(val augend: Money, val addend: Money) extends Expression
+class Sum(val augend: Money, val addend: Money) extends Expression {
+  def reduce(to: String): Money = {
+    val amount = augend.amount + addend.amount
+    new Money(amount, to)
+  }
+}
