@@ -32,7 +32,9 @@ trait Expression
 
 class Bank {
   def reduce(source: Expression, to: String): Money = {
-    return Money.dollar(10)
+    val sum = source.asInstanceOf[Sum]
+    val amount = sum.augend.amount + sum.addend.amount
+    new Money(amount, to)
   }
 }
 
