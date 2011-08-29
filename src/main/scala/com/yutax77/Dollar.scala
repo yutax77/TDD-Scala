@@ -5,8 +5,8 @@ class Money(var amount: Int, val currency: String) extends Expression{
     new Money(amount * multiplier, currency)
   }
   
-  def plus(added: Money): Expression = {
-	new Money(amount + added.amount, currency)
+  def plus(addend: Money): Expression = {
+	new Sum(this, addend)
   }
   
   override def equals(other: Any): Boolean =
@@ -36,4 +36,4 @@ class Bank {
   }
 }
 
-class Sum(val augend: Money, val addend: Money)
+class Sum(val augend: Money, val addend: Money) extends Expression
