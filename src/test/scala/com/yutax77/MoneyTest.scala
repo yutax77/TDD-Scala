@@ -31,4 +31,13 @@ class MoneyTest extends TestNGSuite {
 	  val reduced = bank.reduce(sum, "USD")
 	  expect(Money.dollar(10)) {reduced}
 	}
+	
+	@Test
+	def testPlusReturnsSum() {
+	  val five = Money.dollar(5)
+	  val result = five.plus(five)
+	  val sum = result.asInstanceOf[Sum]
+	  expect(true) {five == sum.augend}
+	  expect(true) {five == sum.addend}
+	}
 }

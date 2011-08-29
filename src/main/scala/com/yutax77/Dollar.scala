@@ -35,3 +35,5 @@ class Bank {
     return Money.dollar(10)
   }
 }
+
+class Sum(val augend: Money, val addend: Money)
