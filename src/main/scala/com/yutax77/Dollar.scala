@@ -9,6 +9,10 @@ class Money(var amount: Int, val currency: String) extends Expression{
 	new Sum(this, addend)
   }
   
+  override def reduce(to: String): Money = {
+	this
+  }
+  
   override def equals(other: Any): Boolean =
 		other match {
 			case that: Money =>
@@ -28,22 +32,18 @@ object Money {
 	  return new Money(amount, "CHF")
 }
 
-trait Expression
+trait Expression {
+  def reduce(to: String): Money
+}
 
 class Bank {
   def reduce(source: Expression, to: String): Money = {
-    source match {
-      case money: Money =>
-        money
-      case _ =>
-        val sum = source.asInstanceOf[Sum]
-        sum.reduce(to)
-    }
+    source.reduce(to)
   }
 }
 
 class Sum(val augend: Money, val addend: Money) extends Expression {
-  def reduce(to: String): Money = {
+  override def reduce(to: String): Money = {
     val amount = augend.amount + addend.amount
     new Money(amount, to)
   }
