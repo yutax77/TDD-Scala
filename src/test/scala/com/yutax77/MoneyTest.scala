@@ -48,4 +48,11 @@ class MoneyTest extends TestNGSuite {
 	  val result = bank.reduce(sum, "USD")
 	  assert(Money.dollar(7) === result)
 	}
+	
+	@Test
+	def testReduceMoney() {
+	  val bank = new Bank()
+	  val result = bank.reduce(Money.dollar(1), "USD")
+	  assert(Money.dollar(1) === result)
+	}
 }
