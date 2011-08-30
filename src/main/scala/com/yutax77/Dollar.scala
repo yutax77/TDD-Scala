@@ -44,7 +44,8 @@ class Bank {
     source.reduce(this, to)
   }
   def rate(from: String, to: String):Int = {
-    if((from == "CHF") && (to == "USD")) 2 else 1
+    val rate = rates.get((from, to))
+    rate.get
   }
   def addRate(from: String, to: String, rate: Int) {
     rates.put((from, to), rate)

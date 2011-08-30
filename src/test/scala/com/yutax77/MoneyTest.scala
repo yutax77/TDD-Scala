@@ -68,4 +68,9 @@ class MoneyTest extends TestNGSuite {
 	def testArrayEquals() {
 	  assert(Array("abc") === Array("abc"))
 	}
+	
+	@Test
+	def testIdentityRate() {
+	  expect(1) {new Bank().rate("USD", "USD")}
+	}
 }
