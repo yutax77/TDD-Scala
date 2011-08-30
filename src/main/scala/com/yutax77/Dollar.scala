@@ -1,11 +1,11 @@
 package com.yutax77
 
 class Money(var amount: Int, val currency: String) extends Expression{
-  def times(multiplier: Int): Expression	= {
+  override def times(multiplier: Int): Expression	= {
     new Money(amount * multiplier, currency)
   }
   
-  def plus(addend: Expression): Expression = {
+  override def plus(addend: Expression): Expression = {
 	new Sum(this, addend)
   }
   
@@ -36,6 +36,7 @@ object Money {
 trait Expression {
   def reduce(bank: Bank, to: String): Money
   def plus(addend: Expression): Expression
+  def times(multiplier: Int): Expression
 }
 
 class Bank {
@@ -62,5 +63,9 @@ class Sum(val augend: Expression, val addend: Expression) extends Expression {
   
   override def plus(addend: Expression): Expression = {
     return new Sum(this, addend)
+  }
+  
+  override def times(multiplier: Int): Expression = {
+    new Sum(augend.times(multiplier), addend.times(multiplier))
   }
 }
