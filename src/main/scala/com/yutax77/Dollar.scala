@@ -44,6 +44,7 @@ class Bank {
     source.reduce(this, to)
   }
   def rate(from: String, to: String):Int = {
+    if(from == to) return 1
     val rate = rates.get((from, to))
     rate.get
   }
