@@ -38,8 +38,8 @@ trait Expression {
   def plus(addend: Expression): Expression
 }
 
-import scala.collection.mutable.Map
 class Bank {
+  import scala.collection.mutable.Map
   val rates = Map[Tuple2[String, String], Int]()
   def reduce(source: Expression, to: String): Money = {
     source.reduce(this, to)
@@ -61,6 +61,6 @@ class Sum(val augend: Expression, val addend: Expression) extends Expression {
   }
   
   override def plus(addend: Expression): Expression = {
-    return null
+    return new Sum(this, addend)
   }
 }

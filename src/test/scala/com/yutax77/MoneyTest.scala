@@ -83,4 +83,15 @@ class MoneyTest extends TestNGSuite {
 	  val result = bank.reduce(fiveBucks.plus(tenFrancs), "USD")
 	  assert(Money.dollar(10) === result)
 	}
+	
+	@Test
+	def testSumPlusMoney() {
+	  val fiveBucks = Money.dollar(5)
+	  val tenFrancs = Money.franc(10);
+	  val bank = new Bank()
+	  bank.addRate("CHF", "USD", 2)
+	  val sum = new Sum(fiveBucks, tenFrancs).plus(fiveBucks)
+	  val result = bank.reduce(sum, "USD")
+	  assert(Money.dollar(15) === result)
+	}
 }
