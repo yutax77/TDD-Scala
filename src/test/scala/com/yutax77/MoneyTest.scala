@@ -105,10 +105,4 @@ class MoneyTest extends TestNGSuite {
 	  val result = bank.reduce(sum, "USD")
 	  assert(Money.dollar(20) === result)	  
 	}
-	
-	@Test
-	def testPlusSameCurrencyReturnsMoney() {
-	  val sum = Money.dollar(1).plus(Money.dollar(1))
-	  expect(true) {sum.isInstanceOf[Money]}
-	}
 }
