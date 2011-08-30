@@ -55,4 +55,17 @@ class MoneyTest extends TestNGSuite {
 	  val result = bank.reduce(Money.dollar(1), "USD")
 	  assert(Money.dollar(1) === result)
 	}
+	
+	@Test
+	def testReduceMoneyDifferentCurrency() {
+	  val bank = new Bank()
+	  bank.addRate("CHF", "USD", 2)
+	  val result = bank.reduce(Money.franc(2), "USD")
+	  assert(Money.dollar(1) === result)
+	}
+	
+	@Test
+	def testArrayEquals() {
+	  assert(Array("abc") === Array("abc"))
+	}
 }

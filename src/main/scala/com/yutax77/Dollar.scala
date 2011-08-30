@@ -9,8 +9,9 @@ class Money(var amount: Int, val currency: String) extends Expression{
 	new Sum(this, addend)
   }
   
-  override def reduce(to: String): Money = {
-	this
+  override def reduce(bank: Bank, to: String): Money = {
+	val rate = bank.rate(currency, to)
+	new Money(amount / rate, to)
   }
   
   override def equals(other: Any): Boolean =
@@ -33,17 +34,25 @@ object Money {
 }
 
 trait Expression {
-  def reduce(to: String): Money
+  def reduce(bank: Bank, to: String): Money
 }
 
+import scala.collection.mutable.Map
 class Bank {
+  val rates = Map[Tuple2[String, String], Int]()
   def reduce(source: Expression, to: String): Money = {
-    source.reduce(to)
+    source.reduce(this, to)
+  }
+  def rate(from: String, to: String):Int = {
+    if((from == "CHF") && (to == "USD")) 2 else 1
+  }
+  def addRate(from: String, to: String, rate: Int) {
+    rates.put((from, to), rate)
   }
 }
 
 class Sum(val augend: Money, val addend: Money) extends Expression {
-  override def reduce(to: String): Money = {
+  override def reduce(bank: Bank, to: String): Money = {
     val amount = augend.amount + addend.amount
     new Money(amount, to)
   }
