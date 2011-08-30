@@ -73,4 +73,14 @@ class MoneyTest extends TestNGSuite {
 	def testIdentityRate() {
 	  expect(1) {new Bank().rate("USD", "USD")}
 	}
+	
+	@Test
+	def testMixedAddition() {
+	  val fiveBucks = Money.dollar(5)
+	  val tenFrancs = Money.franc(10);
+	  val bank = new Bank()
+	  bank.addRate("CHF", "USD", 2)
+	  val result = bank.reduce(fiveBucks.plus(tenFrancs), "USD")
+	  assert(Money.dollar(10) === result)
+	}
 }
